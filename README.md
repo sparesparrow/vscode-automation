@@ -1,8 +1,8 @@
 # vscode-automation — automated TICS violation fixing
 
 A VS Code extension that runs [TICS](https://www.tiobe.com/tics/) code-quality analysis on a C++ code
-base and uses the OpenAI API to propose and apply fixes for the reported violations, then hands the
-result to Git as a reviewable change.
+base and uses the OpenAI API to fix the reported violations, then pushes
+the changes through Git.
 
 It was built in 2024 during an innovation sprint on a client engagement (electron-microscopy detector
 software) and presented to the development team and stakeholders at the end of the sprint.
@@ -13,18 +13,17 @@ software) and presented to the development team and stakeholders at the end of t
 ## What it did
 
 1. **Analyse.** Ran TICS on the open workspace or on a locally cloned repository and collected the
-   violations (rule, file, line, message).
-2. **Propose.** For each violation, sent the rule description and the surrounding code to the OpenAI
-   API and asked for a minimal fix that satisfies the rule without changing behaviour.
-3. **Apply and review.** Applied the suggested edits in the editor so the developer could inspect each
-   diff, then committed the accepted fixes on a branch through the Git API, ready for a pull request.
+   reported violations.
+2. **Fix.** Sent each violation with its code context to the OpenAI API and applied the suggested fix
+   to the source.
+3. **Deliver.** Pushed the resulting changes through the Git integration.
 
 ## Commands
 
 | Command | Purpose |
 |---|---|
 | `Run TICS Analysis` (`extension.runTicsAnalysis`) | Run TICS and list the violations |
-| `Fix TICS Violations` (`extension.fixTicsViolations`) | Generate, apply and commit AI-suggested fixes |
+| `Fix TICS Violations` (`extension.fixTicsViolations`) | Fix the violations with AI-suggested changes |
 
 ## Configuration
 
