@@ -7,8 +7,8 @@ the changes through Git.
 It was built in 2024 during an innovation sprint on a client engagement (electron-microscopy detector
 software) and presented to the development team and stakeholders at the end of the sprint.
 
-> **Source code:** the extension was developed inside the client's environment and its source is not
-> published in this repository. This page documents what it did and how it worked.
+> **Source code:** the extension's source is not published in this repository. This page documents
+> what it did and how it worked.
 
 ## What it did
 
