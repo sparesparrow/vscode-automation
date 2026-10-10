@@ -1,41 +1,42 @@
-# Automated TICS Violations Fixing
+# vscode-automation — automated TICS violation fixing
 
-## Overview
+A VS Code extension that runs [TICS](https://www.tiobe.com/tics/) code-quality analysis on a C++ code
+base and uses the OpenAI API to fix the reported violations, then pushes
+the changes through Git.
 
-This VS Code extension allows automated TICS analysis and code violations resolution using the TICS tool, OpenAI API, and Git API. The user can run TICS analysis and fix violations either on their repository codebase or on a locally cloned repository.
+It was built in 2024 during an innovation sprint on a client engagement (electron-microscopy detector
+software) and presented to the development team and stakeholders at the end of the sprint.
 
-## Features
+> **Source code:** the extension's source is not published in this repository. This page documents
+> what it did and how it worked.
 
-- Run TICS analysis
-- Fix TICS violations automatically
-- Integration with OpenAI for suggested fixes
-- Git integration for pushing changes
+## What it did
+
+1. **Analyse.** Ran TICS on the open workspace or on a locally cloned repository and collected the
+   reported violations.
+2. **Fix.** Sent each violation with its code context to the OpenAI API and applied the suggested fix
+   to the source.
+3. **Deliver.** Pushed the resulting changes through the Git integration.
 
 ## Commands
 
-- `extension.runTicsAnalysis`: Runs TICS analysis
-- `extension.fixTicsViolations`: Fixes TICS violations
-
-## Setup
-
-1. Clone the repository.
-2. Run `npm install` to install dependencies.
-3. Open the project in VS Code.
-4. Press `F5` to start debugging the extension.
-
-## Usage
-
-1. Run the `Run TICS Analysis` command to analyze the code.
-2. Run the `Fix TICS Violations` command to automatically fix any violations found.
+| Command | Purpose |
+|---|---|
+| `Run TICS Analysis` (`extension.runTicsAnalysis`) | Run TICS and list the violations |
+| `Fix TICS Violations` (`extension.fixTicsViolations`) | Fix the violations with AI-suggested changes |
 
 ## Configuration
 
-Configure the extension in the settings:
+| Setting | Meaning |
+|---|---|
+| `tics.apiUrl` | URL of the TICS server API |
+| `openai.apiKey` | OpenAI API key used for fix suggestions |
+| `git.repoUrl` | Repository the fixes are pushed to |
 
-- `tics.apiUrl`: The URL for the TICS API.
-- `openai.apiKey`: The API key for OpenAI.
-- `git.repoUrl`: The URL of the Git repository.
+## Built with
+
+TypeScript, the VS Code Extension API, the Git API and the OpenAI API.
 
 ## License
 
-MIT
+MIT (see [LICENSE](LICENSE)).
